@@ -1,6 +1,6 @@
 {
   "name": "@new-developers-group/core-ts-lib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "re useful classes for typescript",
   "private": false,
   "main": "dist/index.js",
