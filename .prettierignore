@@ -8,3 +8,4 @@ src/migrations
 jest.config.js
 *.md
 types/
+pnpm-lock.yaml
