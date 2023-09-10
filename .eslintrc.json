@@ -1,0 +1,49 @@
+{
+    "env": {
+      "es6": true,
+      "node": true
+    },
+    "extends": ["plugin:@typescript-eslint/recommended", "plugin:promise/recommended", "prettier"],
+    "globals": {},
+    "parser": "@typescript-eslint/parser",
+    "ignorePatterns": ["*.md"],
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module",
+      "project": "tsconfig.json"
+    },
+    "plugins": ["prettier", "@typescript-eslint",  "promise"],
+    "rules": {
+      "@typescript-eslint/no-this-alias": [
+        "error",
+        {
+          "allowDestructuring": false, 
+          "allowedNames": ["middleware"] 
+        }
+      ],
+      "@typescript-eslint/camelcase": "off",
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-member-accessibility": "off",
+      "@typescript-eslint/ban-types": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "off",
+        {
+          "argsIgnorePattern": "^_"
+        }
+      ],
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/require-await": "error",
+      "jsx-quotes": ["error", "prefer-double"],
+      "max-len": ["error", 180],
+      "no-unused-vars": "off",
+      "no-var": "error",
+      "promise/always-return": "off",
+      "promise/catch-or-return": "off",
+      "require-await": "off",
+      "promise/no-return-wrap": "off",
+      "simple-import-sort/sort": "off", 
+      "import/no-extraneous-dependencies": ["off"]
+    }
+  }

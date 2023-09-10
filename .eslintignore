@@ -1,0 +1,10 @@
+node_modules
+dist
+coverage
+.github
+index.ts
+types
+*.md
+types/
+jest.config.js
+jest.setup.js
