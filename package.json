@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "re useful classes for typescript",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
