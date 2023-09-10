@@ -1,3 +1,3 @@
 export interface FieldNameValidation {
-  get fieldName(): string;
+  get fieldName(): string
 }

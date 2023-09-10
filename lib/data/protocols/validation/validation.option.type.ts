@@ -1,4 +1,4 @@
 export type ValidationOptions = {
-  strictEquals?: boolean;
-  customMessage: string;
-};
+  strictEquals?: boolean
+  customMessage: string
+}

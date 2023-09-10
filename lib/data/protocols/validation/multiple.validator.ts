@@ -1,8 +1,8 @@
-import { MultipleValidations } from './validation.error';
+import { MultipleValidations } from './validation.error'
 
 /**
  * validate all attributes at once and return multiple errors
  */
 export interface MultipleValidator {
-  toMultipleValidate(input: unknown): Map<string, MultipleValidations>;
+  toMultipleValidate(input: unknown): Map<string, MultipleValidations>
 }
