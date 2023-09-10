@@ -19,6 +19,7 @@ jobs:
           node-version: 16.x
           cache: 'npm'
 
+      - run: npm install esbuild
       - run: npm install --frozen-lockfile
       - name: Create Release Pull Request or Publish
         id: changesets

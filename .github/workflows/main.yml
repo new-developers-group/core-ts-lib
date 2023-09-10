@@ -1,8 +1,11 @@
 name: CI
 on:
   push:
+    paths-ignore:
+      - '*.md'
+      - '.github/workflows/publish.yaml'
     branches:
-      - '**'
+      - 'main'
   pull_request:
     branches:
       - '**'
