@@ -21,7 +21,7 @@ jobs:
 
       - run: pnpm install esbuild
       - run: pnpm install --frozen-lockfile
-      - run: pnpm version patch
+      - run: pnpm version --allow-same-version --no-git-tag-version
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
