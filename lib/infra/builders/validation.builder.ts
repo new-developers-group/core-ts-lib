@@ -5,12 +5,14 @@ import {
   DuplicateValueValidation,
   EmailValidation,
   EmailValidatorAdapter,
+  MinLengthValidation,
   NumberFieldValidation,
   RequiredFieldValidation,
   StringFieldValidation,
   ValuesWithinValidation
 } from '@/infra/validations'
 import { DEFAULT_ISWITHIN } from '@/infra/validators'
+import { ValuesWhitinValidation } from '../validations/values-whitin-validation'
 
 export class ValidationBuilder {
   private constructor(
@@ -73,6 +75,16 @@ export class ValidationBuilder {
     this.validations.push(
       new CompareFieldsValidation(this.fieldName, fieldToCompare)
     )
+    return this
+  }
+
+  min(length: number): ValidationBuilder {
+    this.validations.push(new MinLengthValidation(this.fieldName, length))
+    return this
+  }
+
+  whitin(values: any[]): ValidationBuilder {
+    this.validations.push(new ValuesWhitinValidation(this.fieldName, values))
     return this
   }
 

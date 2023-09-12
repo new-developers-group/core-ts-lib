@@ -11,6 +11,24 @@ export function getFormattedDate(date: any) {
   return month + '/' + day + '/' + year
 }
 
+export function getRemainingMonthsOfYear(date = new Date()) {
+  const month = date.getMonth() + 1
+  return Math.abs(month - 12)
+}
+
+export function isMonthWith31Days(date = new Date()) {
+  const month = date.getMonth() + 1
+  return (
+    month == 1 ||
+    month == 3 ||
+    month == 5 ||
+    month == 7 ||
+    month == 8 ||
+    month == 10 ||
+    month == 12
+  )
+}
+
 export const formatDateRange = (start: Date, end: Date, period: Recurrence) => {
   switch (period) {
     case Recurrence.Weekly:
