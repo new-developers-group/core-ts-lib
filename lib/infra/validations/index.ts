@@ -1,5 +1,7 @@
+export * from './compare-fields-validation'
 export * from './date.field.validation'
 export * from './duplicate.field.validation'
+export * from './email-validation'
 export * from './number.field.validation'
 export * from './required.field.validation'
 export * from './string.field.validation'

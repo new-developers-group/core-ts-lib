@@ -1,26 +1,30 @@
-import { Validation, ValidationOptions } from '@/data/protocols/validation'
+import {
+  FieldValidation,
+  Validation,
+  ValidationOptions
+} from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain/errors'
-import { ValidationHelper } from './validation.helper'
 import { _isValidDate, isTruthy } from '@/util'
+import { ValidationHelper } from './validation.helper'
 
 export class DateFieldValidation
   extends ValidationHelper
   implements Validation
 {
   constructor(
-    readonly fieldName: string,
+    readonly field: string,
     readonly options?: ValidationOptions
   ) {
-    super(fieldName)
+    super(field)
   }
 
-  validate(input: unknown): Error {
+  validate(input: unknown): FieldValidation {
     const value = this.getNestedAttributeValue(input)
     if (!_isValidDate(value)) {
       const message = isTruthy(this.options)
-        ? `${this.fieldName} ${this.options.customMessage}`
+        ? `${this.field} ${this.options.customMessage}`
         : 'Invalid Date'
-      return new InvalidFieldError(message)
+      return { field: this.field, error: new InvalidFieldError(message) }
     }
   }
 }

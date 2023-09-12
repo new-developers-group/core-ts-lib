@@ -1,7 +1,10 @@
 import { Validation, ValidationOptions } from '@/data/protocols/validation'
 import {
+  CompareFieldsValidation,
   DateFieldValidation,
   DuplicateValueValidation,
+  EmailValidation,
+  EmailValidatorAdapter,
   NumberFieldValidation,
   RequiredFieldValidation,
   StringFieldValidation,
@@ -24,10 +27,12 @@ export class ValidationBuilder {
     return this
   }
 
-  // email (): ValidationBuilder {
-  //   this.validations.push(new EmailValidation(this.fieldName, EmailValidatorAdapter.getInstance()))
-  //   return this
-  // }
+  email(): ValidationBuilder {
+    this.validations.push(
+      new EmailValidation(this.fieldName, EmailValidatorAdapter.getInstance())
+    )
+    return this
+  }
 
   isString(options?: ValidationOptions): ValidationBuilder {
     this.validations.push(new StringFieldValidation(this.fieldName, options))
@@ -64,10 +69,12 @@ export class ValidationBuilder {
     return this
   }
 
-  // sameAs (fieldToCompare: string): ValidationBuilder {
-  //   this.validations.push(new CompareFieldsValidation(this.fieldName, fieldToCompare))
-  //   return this
-  // }
+  sameAs(fieldToCompare: string): ValidationBuilder {
+    this.validations.push(
+      new CompareFieldsValidation(this.fieldName, fieldToCompare)
+    )
+    return this
+  }
 
   build(): Validation[] {
     return this.validations
