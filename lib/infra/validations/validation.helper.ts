@@ -7,8 +7,8 @@ export abstract class ValidationHelper implements FieldValidation {
     throw new Error('Method not implemented.')
   }
 
-  protected getNestedAttributeValue = (input: unknown) => {
-    return this.search(input, this.field)
+  protected getNestedAttributeValue = (input: unknown, otherField?: string) => {
+    return this.search(input, otherField ? otherField : this.field)
   }
 
   search(obj, key): any {

@@ -1,14 +1,28 @@
 import { FieldValidation, Validation } from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain/errors'
+import { ValidationHelper } from './validation.helper'
 
-export class CompareFieldsValidation implements Validation {
+export class CompareFieldsValidation
+  extends ValidationHelper
+  implements Validation
+{
   constructor(
     private readonly fieldName: string,
     private readonly fieldToCompareName: string
-  ) {}
+  ) {
+    super(fieldName)
+  }
 
   validate(input: any): FieldValidation {
-    if (input[this.fieldName] !== input[this.fieldToCompareName]) {
+    const value = this.getNestedAttributeValue(input)
+    const toCompare = this.getNestedAttributeValue(
+      input,
+      this.fieldToCompareName
+    )
+    if (!toCompare) {
+      throw new InvalidFieldError(`can't find value to compare`)
+    }
+    if (value !== toCompare) {
       return {
         field: this.fieldName,
         error: new InvalidFieldError(

@@ -25,4 +25,9 @@ describe('Date field validation test ', () => {
       { field: 'dob', error: new InvalidFieldError('Invalid Date') }
     ])
   })
+
+  it('should not return field validation when dob is valid', () => {
+    const error = validator.validate({ person: { dob: new Date() } })
+    expect(error).toStrictEqual([])
+  })
 })
