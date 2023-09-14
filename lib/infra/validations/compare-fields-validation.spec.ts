@@ -26,15 +26,15 @@ describe('Compare fields validation test ', () => {
   })
 
   it('should return error when confirmPassword is required', () => {
-    try {
-      validator.validate({
-        person: { password: 'undefined', confirmPassword: undefined }
-      })
-    } catch (error) {
-      expect(error).toEqual(
-        new InvalidFieldError(`can't find value to compare`)
-      )
-    }
+    const error = validator.validate({
+      person: { password: 'undefined', confirmPassword: undefined }
+    })
+    expect(error).toEqual([
+      {
+        field: 'confirmPassword',
+        error: new InvalidFieldError(`can't find value to compare`)
+      }
+    ])
   })
 
   it('should return field validation when password is required', () => {

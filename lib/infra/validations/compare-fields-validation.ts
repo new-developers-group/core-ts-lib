@@ -20,7 +20,10 @@ export class CompareFieldsValidation
       this.fieldToCompareName
     )
     if (!toCompare) {
-      throw new InvalidFieldError(`can't find value to compare`)
+      return {
+        field: this.fieldToCompareName,
+        error: new InvalidFieldError(`can't find value to compare`)
+      }
     }
     if (value !== toCompare) {
       return {
