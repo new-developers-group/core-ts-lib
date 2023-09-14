@@ -1,5 +1,5 @@
-import { FieldNameValidation } from './field.name.validation'
+import { FieldValidation } from './field.name.validation'
 
-export interface Validation extends FieldNameValidation {
-  validate: (input: unknown) => Error
+export interface Validation {
+  validate: (input: unknown) => FieldValidation
 }

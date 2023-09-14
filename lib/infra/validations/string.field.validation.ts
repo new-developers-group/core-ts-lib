@@ -1,26 +1,30 @@
+import {
+  FieldValidation,
+  Validation,
+  ValidationOptions
+} from '@/data/protocols/validation'
+import { InvalidFieldError } from '@/domain'
 import { isTruthy } from '@/util'
 import { ValidationHelper } from './validation.helper'
-import { InvalidFieldError } from '@/domain'
-import { Validation, ValidationOptions } from '@/data/protocols/validation'
 
 export class StringFieldValidation
   extends ValidationHelper
   implements Validation
 {
   constructor(
-    readonly fieldName: string,
+    readonly field: string,
     readonly options?: ValidationOptions
   ) {
-    super(fieldName)
+    super(field)
   }
 
-  validate(input: unknown): Error {
+  validate(input: unknown): FieldValidation {
     const value = this.getNestedAttributeValue(input)
     if (!(typeof value === 'string')) {
       const message = isTruthy(this.options)
-        ? `${this.fieldName} ${this.options.customMessage}`
+        ? `${this.field} ${this.options.customMessage}`
         : 'Value is not a string'
-      return new InvalidFieldError(message)
+      return { field: this.field, error: new InvalidFieldError(message) }
     }
   }
 }

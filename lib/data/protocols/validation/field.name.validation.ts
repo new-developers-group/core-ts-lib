@@ -1,3 +1,4 @@
-export interface FieldNameValidation {
-  get fieldName(): string
+export interface FieldValidation {
+  get field(): string
+  get error(): Error | Error[]
 }

@@ -1,14 +1,30 @@
 import { Recurrence } from '@/domain/models'
 import { add, format, nextSunday, previousMonday, sub } from 'date-fns'
 
-const regex_yyyy_mm_dd = /^\d{4}-\d{2}-\d{2}/
-
 export function getFormattedDate(date: any) {
   const year = date.getFullYear()
   const month = (1 + date.getMonth()).toString().padStart(2, '0')
   const day = date.getDate().toString().padStart(2, '0')
 
   return month + '/' + day + '/' + year
+}
+
+export function getRemainingMonthsOfYear(date = new Date()) {
+  const month = date.getMonth() + 1
+  return Math.abs(month - 12)
+}
+
+export function isMonthWith31Days(date = new Date()) {
+  const month = date.getMonth() + 1
+  return (
+    month == 1 ||
+    month == 3 ||
+    month == 5 ||
+    month == 7 ||
+    month == 8 ||
+    month == 10 ||
+    month == 12
+  )
 }
 
 export const formatDateRange = (start: Date, end: Date, period: Recurrence) => {
@@ -58,26 +74,6 @@ export const calculateRange = (period: Recurrence, periodIndex: number) => {
     start,
     end
   }
-}
-
-export function _isValidDate(date: string, regex: RegExp = regex_yyyy_mm_dd) {
-  if (!date) return false
-
-  if (typeof date !== 'string') return false
-
-  if (date.match(regex) === null) {
-    return false
-  }
-
-  const d = new Date(date)
-
-  const timestamp = d.getTime()
-
-  if (typeof timestamp !== 'number' || Number.isNaN(timestamp)) {
-    return false
-  }
-
-  return d.toISOString().startsWith(date)
 }
 
 export const matchRegex = (date: string, expression: RegExp) => {

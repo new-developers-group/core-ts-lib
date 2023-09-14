@@ -1,13 +1,18 @@
 import { Validation, ValidationOptions } from '@/data/protocols/validation'
 import {
+  CompareFieldsValidation,
   DateFieldValidation,
   DuplicateValueValidation,
+  EmailValidation,
+  EmailValidatorAdapter,
+  MinLengthValidation,
   NumberFieldValidation,
   RequiredFieldValidation,
   StringFieldValidation,
   ValuesWithinValidation
 } from '@/infra/validations'
 import { DEFAULT_ISWITHIN } from '@/infra/validators'
+import { ValuesWhitinValidation } from '../validations/values-whitin-validation'
 
 export class ValidationBuilder {
   private constructor(
@@ -24,10 +29,12 @@ export class ValidationBuilder {
     return this
   }
 
-  // email (): ValidationBuilder {
-  //   this.validations.push(new EmailValidation(this.fieldName, EmailValidatorAdapter.getInstance()))
-  //   return this
-  // }
+  email(): ValidationBuilder {
+    this.validations.push(
+      new EmailValidation(this.fieldName, EmailValidatorAdapter.getInstance())
+    )
+    return this
+  }
 
   isString(options?: ValidationOptions): ValidationBuilder {
     this.validations.push(new StringFieldValidation(this.fieldName, options))
@@ -64,10 +71,22 @@ export class ValidationBuilder {
     return this
   }
 
-  // sameAs (fieldToCompare: string): ValidationBuilder {
-  //   this.validations.push(new CompareFieldsValidation(this.fieldName, fieldToCompare))
-  //   return this
-  // }
+  sameAs(fieldToCompare: string): ValidationBuilder {
+    this.validations.push(
+      new CompareFieldsValidation(this.fieldName, fieldToCompare)
+    )
+    return this
+  }
+
+  min(length: number): ValidationBuilder {
+    this.validations.push(new MinLengthValidation(this.fieldName, length))
+    return this
+  }
+
+  whitin(values: any[]): ValidationBuilder {
+    this.validations.push(new ValuesWhitinValidation(this.fieldName, values))
+    return this
+  }
 
   build(): Validation[] {
     return this.validations
