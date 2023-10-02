@@ -1,7 +1,7 @@
 import { HttpStatusCode } from './http.status'
 
 export type HttpResponse<T = unknown> = {
-  statusCode: HttpStatusCode
+  code: HttpStatusCode
   body?: T
   headers?: T
 }

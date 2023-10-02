@@ -1,54 +1,54 @@
 import { ServerError, UnauthorizedError } from '@/domain/errors'
-import { GpResponse } from './http.gp.response'
-import { GpResponseBuilder } from './http.gp.response.builder'
+import { HttpResponse } from './http-response'
+import { HttpResponseBuilder } from './http-response-builder'
 import { HttpStatusCode } from './http.status'
 
-export const badRequest = (error: Error): GpResponse => {
-  return new GpResponseBuilder()
-    .withBody(error)
+export const badRequest = (body: object): HttpResponse => {
+  return new HttpResponseBuilder()
+    .withBody(body)
     .withStatus(HttpStatusCode.badRequest)
     .build()
 }
 
-export const forbidden = (error: Error): GpResponse => {
-  return new GpResponseBuilder()
-    .withBody(error)
+export const forbidden = (body: object): HttpResponse => {
+  return new HttpResponseBuilder()
+    .withBody(body)
     .withStatus(HttpStatusCode.forbidden)
     .build()
 }
 
-export const unauthorized = (): GpResponse => {
-  return new GpResponseBuilder()
+export const unauthorized = (): HttpResponse => {
+  return new HttpResponseBuilder()
     .withBody(new UnauthorizedError())
     .withStatus(HttpStatusCode.unauthorized)
     .build()
 }
 
-export const serverError = (error: Error): GpResponse => {
-  return new GpResponseBuilder()
+export const serverError = (error: Error): HttpResponse => {
+  return new HttpResponseBuilder()
     .withBody(new ServerError(error.message))
     .withStatus(HttpStatusCode.serverError)
     .build()
 }
 
-export const ok = (data: object, headers?: object): GpResponse => {
-  return new GpResponseBuilder()
+export const ok = (data: object, headers?: object): HttpResponse => {
+  return new HttpResponseBuilder()
     .withBody(data)
     .withHeaders(headers)
     .withStatus(HttpStatusCode.ok)
     .build()
 }
 
-export const created = (data: object, headers?: object): GpResponse => {
-  return new GpResponseBuilder()
+export const created = (data: object, headers?: object): HttpResponse => {
+  return new HttpResponseBuilder()
     .withBody(data)
     .withHeaders(headers)
     .withStatus(HttpStatusCode.created)
     .build()
 }
 
-export const noContent = (): GpResponse => {
-  return new GpResponseBuilder()
+export const noContent = (): HttpResponse => {
+  return new HttpResponseBuilder()
     .withBody(undefined)
     .withStatus(HttpStatusCode.noContent)
     .build()

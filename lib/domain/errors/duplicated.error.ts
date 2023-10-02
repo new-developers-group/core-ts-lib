@@ -1,6 +1,6 @@
 export class DuplicateError extends Error {
-  constructor(msg: string) {
-    super(msg)
-    Object.setPrototypeOf(this, DuplicateError.prototype)
+  constructor(message = 'Duplicated Value') {
+    super(message)
+    this.name = 'DuplicateError'
   }
 }

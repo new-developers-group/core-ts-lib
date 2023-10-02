@@ -1,6 +1,6 @@
 export class NotFoundError extends Error {
-  constructor(msg: string) {
-    super(msg)
-    Object.setPrototypeOf(this, NotFoundError.prototype)
+  constructor(message = 'Not Found') {
+    super(message)
+    this.name = 'NotFoundError'
   }
 }

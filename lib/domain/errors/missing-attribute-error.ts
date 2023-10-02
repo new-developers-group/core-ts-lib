@@ -1,6 +1,6 @@
 export class MissingAttributeError extends Error {
-  constructor() {
-    super('Missing Attribute Error')
+  constructor(message = 'Missing Attribute Error') {
+    super(message)
     this.name = 'MissingAttributeError'
   }
 }

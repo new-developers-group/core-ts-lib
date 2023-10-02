@@ -1,6 +1,6 @@
 export class InvalidCredentialError extends Error {
-  constructor(message?: string) {
-    super('Invalid Credentials ' + message)
+  constructor(message = 'Invalid Credentials ') {
+    super(message)
     this.name = 'InvalidCredentialError'
   }
 }
