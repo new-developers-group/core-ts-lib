@@ -1,6 +1,6 @@
 export type StringValidateOptions = {
   strictEquals?: boolean
-  message: string
+  message?: string
   min?: { value: number; message?: string }
   max?: { value: number; message?: string }
 }
