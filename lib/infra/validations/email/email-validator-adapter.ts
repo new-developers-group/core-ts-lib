@@ -1,4 +1,4 @@
-import { EmailValidator } from "@/data"
+import { EmailValidator } from '@/data'
 import validator from 'validator'
 
 export class EmailValidatorAdapter implements EmailValidator {

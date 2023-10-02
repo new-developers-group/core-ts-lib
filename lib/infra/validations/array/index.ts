@@ -1,2 +1,2 @@
-export * from './is-array-field-validation';
-export * from './is-array.validation.options';
+export * from './is-array-field-validation'
+export * from './is-array.validation.options'

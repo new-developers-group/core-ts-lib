@@ -14,28 +14,28 @@ describe('RequiredValidationTest', () => {
   it('should return field validation error when dob is null', () => {
     const error = validator.validate({ person: { dob: undefined } })
     expect(error).toEqual([
-      { field: 'person.dob', error: new InvalidFieldError('Required Field') },
+      { field: 'person.dob', error: new InvalidFieldError('Required Field') }
     ])
   })
 
   it('should return field validation error when there is not such property dob', () => {
-    const error = validator.validate({ person:  undefined  })
+    const error = validator.validate({ person: undefined })
     expect(error).toEqual([
-      { field: 'person.dob', error: new InvalidFieldError('Required Field') },
+      { field: 'person.dob', error: new InvalidFieldError('Required Field') }
     ])
   })
 
   it('should return field validation error when the whole object is null', () => {
-    const error = validator.validate({ })
+    const error = validator.validate({})
     expect(error).toEqual([
-      { field: 'person.dob', error: new InvalidFieldError('Required Field') },
+      { field: 'person.dob', error: new InvalidFieldError('Required Field') }
     ])
   })
 
   it('should return field validation error when there is no object to validate', () => {
     const error = validator.validate(undefined)
     expect(error).toEqual([
-      { field: 'person.dob', error: new InvalidFieldError('Required Field') },
+      { field: 'person.dob', error: new InvalidFieldError('Required Field') }
     ])
   })
 

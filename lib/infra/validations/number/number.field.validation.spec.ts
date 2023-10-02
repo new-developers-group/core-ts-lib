@@ -37,7 +37,7 @@ describe('NumberValidationTest', () => {
       message: 'any_value'
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('person.age').required().isNumber(options).build(),
+      ...Builder.field('person.age').required().isNumber(options).build()
     ])
     const error = validator.validate({ person: { age: undefined } })
     expect(error).toStrictEqual([

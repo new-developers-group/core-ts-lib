@@ -7,7 +7,10 @@ describe('CompareFieldsValidationTest', () => {
   let validator: Validator
   beforeAll(() => {
     validator = ValidatorComposite.build([
-      ...Builder.field('person.password').required().sameAs('person.confirmPassword').build()
+      ...Builder.field('person.password')
+        .required()
+        .sameAs('person.confirmPassword')
+        .build()
     ])
   })
 

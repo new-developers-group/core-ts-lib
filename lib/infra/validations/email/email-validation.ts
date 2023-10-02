@@ -2,9 +2,6 @@ import { EmailValidator, FieldValidation, Validation } from '@/data'
 import { InvalidFieldError } from '@/domain'
 import { searchInJson } from '@/util'
 
-
-
-
 export class EmailValidation implements Validation {
   constructor(
     private readonly fieldName: string,

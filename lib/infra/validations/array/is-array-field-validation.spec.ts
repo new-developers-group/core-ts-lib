@@ -8,7 +8,7 @@ describe('IsArrayValidationTest', () => {
   let validator: Validator
   beforeAll(() => {
     validator = ValidatorComposite.build([
-      ...Builder.field('body.detail.data').required().isArray().build(),
+      ...Builder.field('body.detail.data').required().isArray().build()
     ])
   })
 
@@ -16,7 +16,10 @@ describe('IsArrayValidationTest', () => {
     const payload = { body: { detail: { data: {} } } }
     const error = validator.validate(payload)
     expect(error).toEqual([
-      { field: 'body.detail.data', error: new InvalidFieldError('Must accept a collection of values') },
+      {
+        field: 'body.detail.data',
+        error: new InvalidFieldError('Must accept a collection of values')
+      }
     ])
   })
 
@@ -25,12 +28,12 @@ describe('IsArrayValidationTest', () => {
       message: 'any_value'
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('body.detail.data').required().isArray(options).build(),
+      ...Builder.field('body.detail.data').required().isArray(options).build()
     ])
     const payload = { body: { detail: { data: {} } } }
     const error = validator.validate(payload)
     expect(error).toEqual([
-      { field: 'body.detail.data', error: new InvalidFieldError('any_value') },
+      { field: 'body.detail.data', error: new InvalidFieldError('any_value') }
     ])
   })
 
@@ -41,22 +44,29 @@ describe('IsArrayValidationTest', () => {
   })
 
   it('should not return field validation when data is an array and greater than 1', () => {
-    const payload = { body: { detail: { data: [{}, { payload: { att: "any"} }] }, } }
+    const payload = {
+      body: { detail: { data: [{}, { payload: { att: 'any' } }] } }
+    }
     const error = validator.validate(payload)
     expect(error).toStrictEqual([])
   })
 
   it('should return field validation when data is an array custom options', () => {
     const options: ArrayValidateOptions = {
-      isGreaterThan: { value: 2, message: 'need at least'}
+      isGreaterThan: { value: 2, message: 'need at least' }
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('body.detail.data').required().isArray(options).build(),
+      ...Builder.field('body.detail.data').required().isArray(options).build()
     ])
-    const payload = { body: { detail: { data: [{ payload: { att: "any"} }] }, } }
+    const payload = {
+      body: { detail: { data: [{ payload: { att: 'any' } }] } }
+    }
     const error = validator.validate(payload)
-     expect(error).toEqual([
-      { field: 'body.detail.data', error: new InvalidFieldError('need at least') },
+    expect(error).toEqual([
+      {
+        field: 'body.detail.data',
+        error: new InvalidFieldError('need at least')
+      }
     ])
   })
 })

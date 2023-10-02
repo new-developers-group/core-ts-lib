@@ -1,2 +1,2 @@
-export * from "./number.field.validation";
-export * from './number.validation.options';
+export * from './number.field.validation'
+export * from './number.validation.options'

@@ -3,6 +3,11 @@ export type NumberValidateOptions = {
   message: string
 }
 
-export const NumberValidateOptionsDefault: Pick<NumberValidateOptions, 'message'> = {
-  message: process.env.VALIDATION_NUMBER_MIN ? process.env.VALIDATION_NUMBER_MIN : `Invalid Number`,
-};
+export const NumberValidateOptionsDefault: Pick<
+  NumberValidateOptions,
+  'message'
+> = {
+  message: process.env.VALIDATION_NUMBER_MIN
+    ? process.env.VALIDATION_NUMBER_MIN
+    : `Invalid Number`
+}

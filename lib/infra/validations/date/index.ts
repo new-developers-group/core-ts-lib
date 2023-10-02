@@ -1,1 +1,1 @@
-export * from './date.field.validation';
+export * from './date.field.validation'

@@ -7,15 +7,11 @@ import { InvalidFieldError } from '@/domain/errors'
 import { isTruthy, searchInJson } from '@/util'
 import validator from 'validator'
 
-export class DateFieldValidation
-  implements Validation
-{
+export class DateFieldValidation implements Validation {
   constructor(
     readonly field: string,
     readonly options?: ValidationOptions
-  ) {
-    
-  }
+  ) {}
 
   validate(input: unknown): FieldValidation {
     const value = searchInJson(input, this.field)

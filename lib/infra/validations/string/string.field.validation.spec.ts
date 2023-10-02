@@ -15,7 +15,10 @@ describe('StringValidationTest', () => {
   it('should return field validation error when name is not a string', () => {
     const error = validator.validate({ person: { name: 123 } })
     expect(error).toEqual([
-      { field: 'person.name', error: new InvalidFieldError('Value is not a string') },
+      {
+        field: 'person.name',
+        error: new InvalidFieldError('Value is not a string')
+      }
     ])
   })
 
@@ -24,7 +27,7 @@ describe('StringValidationTest', () => {
       message: 'any_value'
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('person.name').required().isString(options).build(),
+      ...Builder.field('person.name').required().isString(options).build()
     ])
     const error = validator.validate({ person: { name: 123 } })
     expect(error).toStrictEqual([
@@ -38,11 +41,14 @@ describe('StringValidationTest', () => {
       min: { value: 5 }
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('person.name').required().isString(options).build(),
+      ...Builder.field('person.name').required().isString(options).build()
     ])
     const error = validator.validate({ person: { name: '123' } })
     expect(error).toStrictEqual([
-      { field: 'person.name', error: new InvalidFieldError('The mininum lenght of this should be 5') }
+      {
+        field: 'person.name',
+        error: new InvalidFieldError('The mininum lenght of this should be 5')
+      }
     ])
   })
 
@@ -52,12 +58,11 @@ describe('StringValidationTest', () => {
       min: { value: 5, message: 'any_value' }
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('person.name').required().isString(options).build(),
+      ...Builder.field('person.name').required().isString(options).build()
     ])
     const error = validator.validate({ person: { name: '123' } })
     expect(error).toStrictEqual([
       { field: 'person.name', error: new InvalidFieldError('any_value') }
     ])
   })
-  
 })

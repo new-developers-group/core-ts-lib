@@ -6,16 +6,11 @@ import {
 import { InvalidFieldError } from '@/domain/errors'
 import { isTruthy, searchInJson } from '@/util'
 
-export class RequiredFieldValidation
-  
-  implements Validation
-{
+export class RequiredFieldValidation implements Validation {
   constructor(
     readonly field: string,
     readonly options?: ValidationOptions
-  ) {
-    
-  }
+  ) {}
 
   validate(input: unknown): FieldValidation {
     const value = searchInJson(input, this.field)

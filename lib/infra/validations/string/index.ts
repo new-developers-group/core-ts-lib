@@ -1,2 +1,2 @@
-export * from './string.field.validation';
-export * from './string.validation.options';
+export * from './string.field.validation'
+export * from './string.validation.options'

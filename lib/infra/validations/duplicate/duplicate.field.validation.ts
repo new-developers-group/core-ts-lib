@@ -6,16 +6,12 @@ import {
 import { InvalidFieldError } from '@/domain'
 import { containsDuplicate, searchInJson } from '@/util'
 
-export class DuplicateValueValidation
-  implements Validation
-{
+export class DuplicateValueValidation implements Validation {
   constructor(
     readonly field: string,
     readonly values: unknown[],
     readonly options?: ValidationOptions
-  ) {
-    
-  }
+  ) {}
 
   validate(input: unknown): FieldValidation {
     let validationErrorMessage = null

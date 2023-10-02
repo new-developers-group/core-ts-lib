@@ -1,4 +1,4 @@
-import jp from 'jsonpath';
+import jp from 'jsonpath'
 
 export const isEmptyObject = (obj: object) => {
   return Object.keys(obj).length === 0
@@ -9,7 +9,7 @@ export const isAttributeInObject = (attr: string, obj: object) => {
 }
 
 export const searchInJson = (obj, key): any => {
-  if(obj && (typeof obj === 'object')) {
+  if (obj && typeof obj === 'object') {
     return jp.value(obj, `$.${key}`)
   }
   return undefined
