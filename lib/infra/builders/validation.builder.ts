@@ -1,19 +1,20 @@
 import { Validation, ValidationOptions } from '@/data/protocols/validation'
 import {
+  ArrayValidateOptions,
   CompareFieldsValidation,
   DateFieldValidation,
   DuplicateValueValidation,
   EmailValidation,
   EmailValidatorAdapter,
-  MinLengthValidation,
+  IsArrayFieldValidation,
   NumberFieldValidation,
+  NumberValidateOptions,
   RequiredFieldValidation,
   StringFieldValidation,
+  StringValidateOptions,
   ValuesWithinValidation
 } from '@/infra/validations'
 import { DEFAULT_ISWITHIN } from '@/infra/validators'
-import { ValuesWhitinValidation } from '../validations/values-whitin-validation'
-
 export class ValidationBuilder {
   private constructor(
     private readonly fieldName: string,
@@ -36,18 +37,23 @@ export class ValidationBuilder {
     return this
   }
 
-  isString(options?: ValidationOptions): ValidationBuilder {
+  isString(options?: StringValidateOptions): ValidationBuilder {
     this.validations.push(new StringFieldValidation(this.fieldName, options))
     return this
   }
 
-  isNumber(options?: ValidationOptions): ValidationBuilder {
+  isNumber(options?: NumberValidateOptions): ValidationBuilder {
     this.validations.push(new NumberFieldValidation(this.fieldName, options))
     return this
   }
 
   isDate(options?: ValidationOptions): ValidationBuilder {
     this.validations.push(new DateFieldValidation(this.fieldName, options))
+    return this
+  }
+
+  isArray(options?: ArrayValidateOptions): ValidationBuilder {
+    this.validations.push(new IsArrayFieldValidation(this.fieldName, options))
     return this
   }
 
@@ -78,13 +84,8 @@ export class ValidationBuilder {
     return this
   }
 
-  min(length: number): ValidationBuilder {
-    this.validations.push(new MinLengthValidation(this.fieldName, length))
-    return this
-  }
-
-  whitin(values: any[]): ValidationBuilder {
-    this.validations.push(new ValuesWhitinValidation(this.fieldName, values))
+  whitin(values: unknown[]): ValidationBuilder {
+    this.validations.push(new ValuesWithinValidation(this.fieldName, values))
     return this
   }
 

@@ -6,15 +6,15 @@ export const CUSTOM_PROFESSIONAL_DUP_ERR_MSG = `Duplicate name found. Please ver
 
 export const DEFAULT: ValidationOptions = {
   strictEquals: false,
-  customMessage: null
+  message: null
 }
 
 export const DEFAULT_ISWITHIN: ValidationOptions = {
   strictEquals: false,
-  customMessage: DEFAULT_ERROR_MSG
+  message: DEFAULT_ERROR_MSG
 }
 
 export const DEFAULT_REQUIRED: ValidationOptions = {
   strictEquals: false,
-  customMessage: 'is required field'
+  message: 'is required field'
 }

@@ -1,13 +1,16 @@
 import { Validator } from '@/data'
 import { InvalidFieldError } from '@/domain'
-import { ValidationBuilder as Builder } from '../builders'
-import { ValidatorComposite } from '../validators'
+import { ValidationBuilder as Builder } from '@/infra/builders'
+import { ValidatorComposite } from '@/infra/validators'
 
-describe('Compare fields validation test ', () => {
+describe('CompareFieldsValidationTest', () => {
   let validator: Validator
   beforeAll(() => {
     validator = ValidatorComposite.build([
-      ...Builder.field('password').required().sameAs('confirmPassword').build()
+      ...Builder.field('person.password')
+        .required()
+        .sameAs('person.confirmPassword')
+        .build()
     ])
   })
 
@@ -17,7 +20,7 @@ describe('Compare fields validation test ', () => {
     })
     expect(error).toEqual([
       {
-        field: 'password',
+        field: 'person.password',
         error: new InvalidFieldError(
           `the value doesn't match the value expected`
         )
@@ -31,7 +34,7 @@ describe('Compare fields validation test ', () => {
     })
     expect(error).toEqual([
       {
-        field: 'confirmPassword',
+        field: 'person.confirmPassword',
         error: new InvalidFieldError(`can't find value to compare`)
       }
     ])
@@ -43,11 +46,11 @@ describe('Compare fields validation test ', () => {
     })
     expect(error).toEqual([
       {
-        field: 'password',
+        field: 'person.password',
         error: new InvalidFieldError(`Required Field`)
       },
       {
-        field: 'password',
+        field: 'person.password',
         error: new InvalidFieldError(
           `the value doesn't match the value expected`
         )
