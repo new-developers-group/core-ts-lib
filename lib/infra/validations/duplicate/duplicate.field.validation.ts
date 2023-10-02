@@ -4,11 +4,9 @@ import {
   ValidationOptions
 } from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain'
-import { containsDuplicate } from '@/util'
-import { ValidationHelper } from './validation.helper'
+import { containsDuplicate, searchInJson } from '@/util'
 
 export class DuplicateValueValidation
-  extends ValidationHelper
   implements Validation
 {
   constructor(
@@ -16,19 +14,19 @@ export class DuplicateValueValidation
     readonly values: unknown[],
     readonly options?: ValidationOptions
   ) {
-    super(field)
+    
   }
 
   validate(input: unknown): FieldValidation {
     let validationErrorMessage = null
     const isCaseSensitive = true
-    const value = this.getNestedAttributeValue(input) as string
+    const value = searchInJson(input, this.field)
     if (this.options.strictEquals) {
       if (containsDuplicate(this.values as string[], value, isCaseSensitive)) {
-        validationErrorMessage = `${this.options.customMessage}`
+        validationErrorMessage = `${this.options.message}`
       }
     } else if (containsDuplicate(this.values as string[], value, false)) {
-      validationErrorMessage = `${this.options.customMessage}`
+      validationErrorMessage = `${this.options.message}`
     }
 
     if (validationErrorMessage !== null) {

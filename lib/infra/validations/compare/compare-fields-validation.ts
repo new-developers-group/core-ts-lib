@@ -1,21 +1,20 @@
 import { FieldValidation, Validation } from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain/errors'
-import { ValidationHelper } from './validation.helper'
+import { searchInJson } from '@/util'
 
-export class CompareFieldsValidation
-  extends ValidationHelper
+export class CompareFieldsValidation 
   implements Validation
 {
   constructor(
     private readonly fieldName: string,
     private readonly fieldToCompareName: string
   ) {
-    super(fieldName)
+   
   }
 
-  validate(input: any): FieldValidation {
-    const value = this.getNestedAttributeValue(input)
-    const toCompare = this.getNestedAttributeValue(
+  validate(input: unknown): FieldValidation {
+    const value = searchInJson(input, this.fieldName)
+    const toCompare = searchInJson(
       input,
       this.fieldToCompareName
     )

@@ -1,6 +1,6 @@
 import { containsDuplicate, containsValue } from './string.utils'
 
-describe('String Utils ', () => {
+describe('StringUtils', () => {
   const arrWithDuplicates: string[] = [
     'Alan',
     'Brian',
@@ -106,7 +106,7 @@ describe('String Utils ', () => {
       )
     })
 
-    it('should return false if value is in array but case sensitivity is true ', () => {
+    it('should return false if value is in array but case sensitivity is true', () => {
       expect(containsValue(arrWithDuplicates, 'brian', caseSensitiveTrue)).toBe(
         false
       )

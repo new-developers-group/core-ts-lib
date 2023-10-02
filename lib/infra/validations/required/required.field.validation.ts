@@ -4,26 +4,25 @@ import {
   ValidationOptions
 } from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain/errors'
-import { _isNumber, isTruthy } from '@/util'
-import { ValidationHelper } from './validation.helper'
+import { isTruthy, searchInJson } from '@/util'
 
-export class NumberFieldValidation
-  extends ValidationHelper
+export class RequiredFieldValidation
+  
   implements Validation
 {
   constructor(
     readonly field: string,
     readonly options?: ValidationOptions
   ) {
-    super(field)
+    
   }
 
   validate(input: unknown): FieldValidation {
-    const value = this.getNestedAttributeValue(input)
-    if (!_isNumber(value)) {
+    const value = searchInJson(input, this.field)
+    if (!isTruthy(value)) {
       const message = isTruthy(this.options)
-        ? `${this.field} ${this.options.customMessage}`
-        : 'Invalid Number'
+        ? `${this.field} ${this.options.message}`
+        : 'Required Field'
       return { field: this.field, error: new InvalidFieldError(message) }
     }
   }

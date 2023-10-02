@@ -55,7 +55,9 @@ export const calculateRange = (period: Recurrence, periodIndex: number) => {
       })
       break
     case Recurrence.Weekly:
+      // eslint-disable-next-line no-case-declarations
       const firstDayOfThisWeek = previousMonday(now)
+      // eslint-disable-next-line no-case-declarations
       const daysToSubtract = periodIndex * 7
       start = sub(firstDayOfThisWeek, { days: daysToSubtract })
       end = nextSunday(start)
