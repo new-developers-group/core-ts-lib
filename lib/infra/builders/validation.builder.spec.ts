@@ -9,7 +9,7 @@ describe('ValidationBuilderTest', () => {
   beforeAll(() => {
     validator = ValidatorComposite.build([
       ...Builder.field('person').required().build(),
-      ...Builder.field('user.id').required().isNumber().build(),
+      ...Builder.field('user.id').required().number().build(),
       ...Builder.field('user.address.eirCode').required().build()
     ])
   })

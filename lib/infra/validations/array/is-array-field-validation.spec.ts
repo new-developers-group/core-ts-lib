@@ -8,7 +8,7 @@ describe('IsArrayValidationTest', () => {
   let validator: Validator
   beforeAll(() => {
     validator = ValidatorComposite.build([
-      ...Builder.field('body.detail.data').required().isArray().build()
+      ...Builder.field('body.detail.data').required().array().build()
     ])
   })
 
@@ -28,7 +28,7 @@ describe('IsArrayValidationTest', () => {
       message: 'any_value'
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('body.detail.data').required().isArray(options).build()
+      ...Builder.field('body.detail.data').required().array(options).build()
     ])
     const payload = { body: { detail: { data: {} } } }
     const error = validator.validate(payload)
@@ -56,7 +56,7 @@ describe('IsArrayValidationTest', () => {
       isGreaterThan: { value: 2, message: 'need at least' }
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('body.detail.data').required().isArray(options).build()
+      ...Builder.field('body.detail.data').required().array(options).build()
     ])
     const payload = {
       body: { detail: { data: [{ payload: { att: 'any' } }] } }

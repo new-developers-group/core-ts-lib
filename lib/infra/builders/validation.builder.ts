@@ -37,27 +37,27 @@ export class ValidationBuilder {
     return this
   }
 
-  isString(options?: StringValidateOptions): ValidationBuilder {
+  string(options?: StringValidateOptions): ValidationBuilder {
     this.validations.push(new StringFieldValidation(this.fieldName, options))
     return this
   }
 
-  isNumber(options?: NumberValidateOptions): ValidationBuilder {
+  number(options?: NumberValidateOptions): ValidationBuilder {
     this.validations.push(new NumberFieldValidation(this.fieldName, options))
     return this
   }
 
-  isDate(options?: ValidationOptions): ValidationBuilder {
+  date(options?: ValidationOptions): ValidationBuilder {
     this.validations.push(new DateFieldValidation(this.fieldName, options))
     return this
   }
 
-  isArray(options?: ArrayValidateOptions): ValidationBuilder {
+  array(options?: ArrayValidateOptions): ValidationBuilder {
     this.validations.push(new IsArrayFieldValidation(this.fieldName, options))
     return this
   }
 
-  isWithin(
+  within(
     values: unknown[],
     options: ValidationOptions = DEFAULT_ISWITHIN
   ): ValidationBuilder {
@@ -67,7 +67,7 @@ export class ValidationBuilder {
     return this
   }
 
-  isDuplicate(
+  duplicate(
     values: unknown[],
     options: ValidationOptions = DEFAULT_ISWITHIN
   ): ValidationBuilder {
@@ -84,8 +84,8 @@ export class ValidationBuilder {
     return this
   }
 
-  whitin(values: unknown[]): ValidationBuilder {
-    this.validations.push(new ValuesWithinValidation(this.fieldName, values))
+  with(validation: Validation): ValidationBuilder {
+    this.validations.push(validation)
     return this
   }
 

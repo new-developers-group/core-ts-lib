@@ -7,7 +7,7 @@ describe('DateFieldValidationTest', () => {
   let validator: Validator
   beforeAll(() => {
     validator = ValidatorComposite.build([
-      ...Builder.field('person.dob').required().isDate().build()
+      ...Builder.field('person.dob').required().date().build()
     ])
   })
 
