@@ -8,7 +8,7 @@ describe('StringValidationTest', () => {
   let validator: Validator
   beforeAll(() => {
     validator = ValidatorComposite.build([
-      ...Builder.field('person.name').required().isString().build()
+      ...Builder.field('person.name').required().string().build()
     ])
   })
 
@@ -27,7 +27,7 @@ describe('StringValidationTest', () => {
       message: 'any_value'
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('person.name').required().isString(options).build()
+      ...Builder.field('person.name').required().string(options).build()
     ])
     const error = validator.validate({ person: { name: 123 } })
     expect(error).toStrictEqual([
@@ -41,7 +41,7 @@ describe('StringValidationTest', () => {
       min: { value: 5 }
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('person.name').required().isString(options).build()
+      ...Builder.field('person.name').required().string(options).build()
     ])
     const error = validator.validate({ person: { name: '123' } })
     expect(error).toStrictEqual([
@@ -58,7 +58,7 @@ describe('StringValidationTest', () => {
       min: { value: 5, message: 'any_value' }
     }
     const validator: Validator = ValidatorComposite.build([
-      ...Builder.field('person.name').required().isString(options).build()
+      ...Builder.field('person.name').required().string(options).build()
     ])
     const error = validator.validate({ person: { name: '123' } })
     expect(error).toStrictEqual([
