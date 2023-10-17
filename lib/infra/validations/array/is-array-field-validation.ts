@@ -30,9 +30,7 @@ export class IsArrayFieldValidation implements Validation {
       return {
         field: this.field,
         error: new InvalidFieldError(
-          message
-            ? message
-            : `Must be greater than ${this.options.isGreaterThan.value}`
+          message || `Must be greater than ${this.options.isGreaterThan.value}`
         )
       }
     }
