@@ -8,7 +8,7 @@ export class EmailValidation implements Validation {
     private readonly emailValidator: EmailValidator
   ) {}
 
-  validate(input: any): FieldValidation {
+  validate(input: unknown): FieldValidation {
     const value = searchInJson(input, this.fieldName)
     const isValid = this.emailValidator.isValid(value)
     if (!isValid) {

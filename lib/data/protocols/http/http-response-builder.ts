@@ -1,7 +1,7 @@
 import { HttpResponse } from './http-response'
 
 export class HttpResponseBuilder {
-  private res: HttpResponse = {
+  private readonly res: HttpResponse = {
     code: 200,
     body: {},
     headers: {}
@@ -23,6 +23,6 @@ export class HttpResponseBuilder {
   }
 
   public build(): HttpResponse {
-    return this.res as HttpResponse
+    return this.res
   }
 }

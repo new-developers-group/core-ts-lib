@@ -28,9 +28,8 @@ export class StringFieldValidation implements Validation {
       return {
         field: this.field,
         error: new InvalidFieldError(
-          message
-            ? message
-            : `The mininum lenght of this should be ${this.options.min.value}`
+          message ||
+            `The mininum lenght of this should be ${this.options.min.value}`
         )
       }
     }
@@ -42,9 +41,8 @@ export class StringFieldValidation implements Validation {
       return {
         field: this.field,
         error: new InvalidFieldError(
-          message
-            ? message
-            : `The maximum lenght of this should be ${this.options.max.value}`
+          message ||
+            `The maximum lenght of this should be ${this.options.max.value}`
         )
       }
     }

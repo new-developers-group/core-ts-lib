@@ -15,6 +15,14 @@ import {
   ValuesWithinValidation
 } from '@/infra/validations'
 import { DEFAULT_ISWITHIN } from '@/infra/validators'
+import {
+  BooleanFieldValidation,
+  BooleanValidateOptions
+} from '../validations/boolean'
+import {
+  EqualsToFieldValidation,
+  EqualsValidateOptions
+} from '../validations/equals'
 export class ValidationBuilder {
   private constructor(
     private readonly fieldName: string,
@@ -77,6 +85,18 @@ export class ValidationBuilder {
     return this
   }
 
+  equals(comparison: any, options?: EqualsValidateOptions): ValidationBuilder {
+    this.validations.push(
+      new EqualsToFieldValidation(this.fieldName, comparison, options)
+    )
+    return this
+  }
+
+  boolean(options?: BooleanValidateOptions): ValidationBuilder {
+    this.validations.push(new BooleanFieldValidation(this.fieldName, options))
+    return this
+  }
+
   sameAs(fieldToCompare: string): ValidationBuilder {
     this.validations.push(
       new CompareFieldsValidation(this.fieldName, fieldToCompare)
@@ -84,7 +104,7 @@ export class ValidationBuilder {
     return this
   }
 
-  with(validation: Validation): ValidationBuilder {
+  custom(validation: Validation): ValidationBuilder {
     this.validations.push(validation)
     return this
   }
