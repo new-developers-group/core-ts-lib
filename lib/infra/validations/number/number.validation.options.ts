@@ -1,4 +1,4 @@
-import { MessagesValidations } from "@/infra/validators"
+import { MessagesValidations } from '@/infra/validators'
 
 export type NumberValidateOptions = {
   strictEquals?: boolean

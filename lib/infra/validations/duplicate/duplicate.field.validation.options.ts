@@ -1,4 +1,4 @@
-import { MessagesValidations } from "@/infra/validators"
+import { MessagesValidations } from '@/infra/validators'
 
 export type DuplicateValidateOptions = {
   strictEquals?: boolean
@@ -7,7 +7,7 @@ export type DuplicateValidateOptions = {
 
 export const DuplicateValidateOptionsDefault: Pick<
   DuplicateValidateOptions,
-  "message"
+  'message'
 > = {
   message: process.env.VALIDATION_EQUALS
     ? process.env.VALIDATION_EQUALS

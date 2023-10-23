@@ -1,10 +1,10 @@
-import {
-  FieldValidation,
-  Validation
-} from '@/data/protocols/validation'
+import { FieldValidation, Validation } from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain'
 import { containsDuplicate, searchInJson } from '@/util'
-import { DuplicateValidateOptions, DuplicateValidateOptionsDefault } from './duplicate.field.validation.options'
+import {
+  DuplicateValidateOptions,
+  DuplicateValidateOptionsDefault
+} from './duplicate.field.validation.options'
 
 export class DuplicateValueValidation implements Validation {
   constructor(

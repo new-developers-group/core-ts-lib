@@ -1,11 +1,10 @@
-import { MessagesValidations } from "@/infra/validators"
+import { MessagesValidations } from '@/infra/validators'
 
 export type RequiredFieldValidationOptions = {
   strictEquals?: boolean
   message?: string
   value?: unknown
 }
-
 
 export const RequiredFieldValidationOptionsDefault: Pick<
   RequiredFieldValidationOptions,

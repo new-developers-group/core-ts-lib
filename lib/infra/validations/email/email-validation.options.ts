@@ -1,4 +1,4 @@
-import { MessagesValidations } from "@/infra/validators"
+import { MessagesValidations } from '@/infra/validators'
 
 export type EmailValidateOptions = {
   message?: string
@@ -6,7 +6,7 @@ export type EmailValidateOptions = {
 
 export const EmailValidateOptionsDefault: Pick<
   EmailValidateOptions,
-  "message"
+  'message'
 > = {
   message: process.env.VALIDATION_EMAIL
     ? process.env.VALIDATION_EMAIL

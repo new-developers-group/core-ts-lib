@@ -1,4 +1,4 @@
-import { MessagesValidations } from "@/infra/validators"
+import { MessagesValidations } from '@/infra/validators'
 
 export type CompareValidateOptions = {
   message?: string
@@ -6,7 +6,7 @@ export type CompareValidateOptions = {
 
 export const CompareValidateOptionsDefault: Pick<
   CompareValidateOptions,
-  "message"
+  'message'
 > = {
   message: process.env.VALIDATION_COMPARE
     ? process.env.VALIDATION_COMPARE

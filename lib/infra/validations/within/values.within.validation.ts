@@ -1,10 +1,10 @@
-import {
-  FieldValidation,
-  Validation
-} from '@/data/protocols/validation'
+import { FieldValidation, Validation } from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain'
 import { containsValue, searchInJson } from '@/util'
-import { WhithinValuesValidationOptions, WhithinValuesValidationOptionsDefault } from './within.values.validation.options'
+import {
+  WhithinValuesValidationOptions,
+  WhithinValuesValidationOptionsDefault
+} from './within.values.validation.options'
 
 export class ValuesWithinValidation implements Validation {
   constructor(

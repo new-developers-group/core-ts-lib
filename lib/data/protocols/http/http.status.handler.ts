@@ -1,4 +1,10 @@
-import { BadGatewayError, BadRequestError, ForbiddenError, InvalidCredentialError, NotFoundError } from '@/domain'
+import {
+  BadGatewayError,
+  BadRequestError,
+  ForbiddenError,
+  InvalidCredentialError,
+  NotFoundError
+} from '@/domain'
 import { HttpResponse } from './http-response'
 import { HttpStatusCode } from './http.status'
 

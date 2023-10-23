@@ -24,7 +24,7 @@ describe('StringValidationTest', () => {
 
   it('should return field validation when age is invalid with options', () => {
     const options: StringValidateOptions = {
-      message: 'any_value',
+      message: 'any_value'
     }
     const validator: Validator = ValidatorComposite.build([
       ...Builder.field('person.name').required().string(options).build()
