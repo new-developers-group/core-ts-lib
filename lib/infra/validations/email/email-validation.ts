@@ -1,11 +1,13 @@
 import { EmailValidator, FieldValidation, Validation } from '@/data'
 import { InvalidFieldError } from '@/domain'
 import { searchInJson } from '@/util'
+import { EmailValidateOptions, EmailValidateOptionsDefault } from './email-validation.options'
 
 export class EmailValidation implements Validation {
   constructor(
-    private readonly fieldName: string,
-    private readonly emailValidator: EmailValidator
+     readonly fieldName: string,
+     readonly emailValidator: EmailValidator,
+     readonly options: EmailValidateOptions = EmailValidateOptionsDefault
   ) {}
 
   validate(input: unknown): FieldValidation {
@@ -14,7 +16,7 @@ export class EmailValidation implements Validation {
     if (!isValid) {
       return {
         field: this.fieldName,
-        error: new InvalidFieldError(`Invalid Email`)
+        error: new InvalidFieldError(this.options.message)
       }
     }
   }

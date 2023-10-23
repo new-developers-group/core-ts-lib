@@ -8,10 +8,7 @@ describe('EqualsValidationTest', () => {
 
   it('should return field validation error when surname is not equals than expected value with strictEquals', () => {
     validator = ValidatorComposite.build([
-      ...Builder.field('person.surname')
-        .required()
-        .equals('123', { strictEquals: true, message: 'any' })
-        .build()
+      ...Builder.field('person.surname').required().equals('123', { strictEquals: true, message: 'any' }).build()
     ])
     const error = validator.validate({ person: { surname: 123 } })
     expect(error).toEqual([
@@ -25,12 +22,7 @@ describe('EqualsValidationTest', () => {
     ])
     const error = validator.validate({ person: { surname: 1234 } })
     expect(error).toEqual([
-      {
-        field: 'person.surname',
-        error: new InvalidFieldError(
-          'The value provided is not equals to expected 123'
-        )
-      }
+      { field: 'person.surname', error: new InvalidFieldError('The value provided is not equals to expected 123') }
     ])
   })
 
@@ -41,4 +33,5 @@ describe('EqualsValidationTest', () => {
     const error = validator.validate({ person: { surname: 1234 } })
     expect(error).toEqual([])
   })
+  
 })

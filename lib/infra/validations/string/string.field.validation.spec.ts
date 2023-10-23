@@ -24,7 +24,7 @@ describe('StringValidationTest', () => {
 
   it('should return field validation when age is invalid with options', () => {
     const options: StringValidateOptions = {
-      message: 'any_value'
+      message: 'any_value',
     }
     const validator: Validator = ValidatorComposite.build([
       ...Builder.field('person.name').required().string(options).build()
@@ -38,7 +38,7 @@ describe('StringValidationTest', () => {
   it('should return field validation when age is invalid with options mininum value default message', () => {
     const options: StringValidateOptions = {
       message: 'any_value',
-      min: { value: 5 }
+      min_length: { value: 5 }
     }
     const validator: Validator = ValidatorComposite.build([
       ...Builder.field('person.name').required().string(options).build()
@@ -55,7 +55,7 @@ describe('StringValidationTest', () => {
   it('should return field validation when age is invalid with options mininum value custom message', () => {
     const options: StringValidateOptions = {
       message: 'any_value',
-      min: { value: 5, message: 'any_value' }
+      min_length: { value: 5, message: 'any_value' }
     }
     const validator: Validator = ValidatorComposite.build([
       ...Builder.field('person.name').required().string(options).build()

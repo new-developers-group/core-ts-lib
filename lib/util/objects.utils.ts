@@ -11,6 +11,7 @@ export const isAttributeInObject = (attr: string, obj: object) => {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const searchInJson = (obj, key): any => {
   if (obj && typeof obj === 'object') {
+    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     return jp.value(obj, `$.${key}`)
   }
   return undefined

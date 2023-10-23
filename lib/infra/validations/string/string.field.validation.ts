@@ -21,28 +21,26 @@ export class StringFieldValidation implements Validation {
       }
     }
 
-    if (this.options.min && value.length < this.options.min.value) {
+    if (this.options.min_length && value.length < this.options.min_length.value) {
       const message = process.env.VALIDATION_STRING_MIN
         ? process.env.VALIDATION_STRING_MIN
-        : this.options.min.message
+        : this.options.min_length.message
       return {
         field: this.field,
         error: new InvalidFieldError(
-          message ||
-            `The mininum lenght of this should be ${this.options.min.value}`
+          message || `The mininum lenght of this should be ${this.options.min_length.value}`
         )
       }
     }
 
-    if (this.options.max && value.length > this.options.max.value) {
+    if (this.options.max_length && value.length > this.options.max_length.value) {
       const message = process.env.VALIDATION_STRING_MAX
         ? process.env.VALIDATION_STRING_MIN
-        : this.options.max.message
+        : this.options.max_length.message
       return {
         field: this.field,
         error: new InvalidFieldError(
-          message ||
-            `The maximum lenght of this should be ${this.options.max.value}`
+          message || `The maximum lenght of this should be ${this.options.max_length.value}`
         )
       }
     }

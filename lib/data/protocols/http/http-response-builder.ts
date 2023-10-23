@@ -1,4 +1,5 @@
-import { HttpResponse } from './http-response'
+import { HttpResponse } from "./http-response"
+
 
 export class HttpResponseBuilder {
   private readonly res: HttpResponse = {
@@ -23,6 +24,6 @@ export class HttpResponseBuilder {
   }
 
   public build(): HttpResponse {
-    return this.res
+    return this.res 
   }
 }
