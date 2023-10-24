@@ -1,25 +1,25 @@
-import {
-  FieldValidation,
-  Validation,
-  ValidationOptions
-} from '@/data/protocols/validation'
+import { FieldValidation, Validation } from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain/errors'
-import { isTruthy, searchInJson } from '@/util'
+import { searchInJson } from '@/util'
 import validator from 'validator'
+import {
+  DateValidateOptions,
+  DateValidateOptionsDefault
+} from './data.field.validation.options'
 
 export class DateFieldValidation implements Validation {
   constructor(
     readonly field: string,
-    readonly options?: ValidationOptions
+    readonly options: DateValidateOptions = DateValidateOptionsDefault
   ) {}
 
   validate(input: unknown): FieldValidation {
     const value = searchInJson(input, this.field)
     if (!validator.isDate(value)) {
-      const message = isTruthy(this.options)
-        ? `${this.field} ${this.options.message}`
-        : 'Invalid Date'
-      return { field: this.field, error: new InvalidFieldError(message) }
+      return {
+        field: this.field,
+        error: new InvalidFieldError(this.options.message)
+      }
     }
   }
 }

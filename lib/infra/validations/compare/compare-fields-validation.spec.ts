@@ -22,7 +22,7 @@ describe('CompareFieldsValidationTest', () => {
       {
         field: 'person.password',
         error: new InvalidFieldError(
-          `the value doesn't match the value expected`
+          `The value doesn't match the value expected`
         )
       }
     ])
@@ -52,7 +52,7 @@ describe('CompareFieldsValidationTest', () => {
       {
         field: 'person.password',
         error: new InvalidFieldError(
-          `the value doesn't match the value expected`
+          `The value doesn't match the value expected`
         )
       }
     ])

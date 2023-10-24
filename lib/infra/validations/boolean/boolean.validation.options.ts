@@ -1,3 +1,5 @@
+import { MessagesValidations } from '@/infra/validators'
+
 export type BooleanValidateOptions = {
   message?: string
   value?: { shouldbe: boolean }
@@ -9,5 +11,5 @@ export const BooleanValidateOptionsDefault: Pick<
 > = {
   message: process.env.VALIDATION_BOOLEAN
     ? process.env.VALIDATION_BOOLEAN
-    : `The value provided is not boolean`
+    : MessagesValidations.BOOLEAN
 }

@@ -1,3 +1,5 @@
+import { MessagesValidations } from '@/infra/validators'
+
 export type ArrayValidateOptions = {
   message?: string
   isGreaterThan?: { value: number; message?: string }
@@ -9,5 +11,5 @@ export const ArrayValidateOptionsDefault: Pick<
 > = {
   message: process.env.VALIDATION_INVALID_ARRAY
     ? process.env.VALIDATION_INVALID_ARRAY
-    : `Must accept a collection of values`
+    : MessagesValidations.ARRAY
 }

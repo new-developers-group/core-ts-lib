@@ -14,7 +14,7 @@ describe('BooleanValidationTest', () => {
     expect(error).toEqual([
       {
         field: 'person.isAdmin',
-        error: new InvalidFieldError('The value provided is not boolean')
+        error: new InvalidFieldError('Should be a boolean')
       }
     ])
   })

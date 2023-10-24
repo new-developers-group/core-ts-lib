@@ -1,28 +1,26 @@
-import { Validation, ValidationOptions } from '@/data/protocols/validation'
+import { Validation } from '@/data/protocols/validation'
 import {
   ArrayValidateOptions,
+  BooleanFieldValidation,
+  BooleanValidateOptions,
   CompareFieldsValidation,
   DateFieldValidation,
   DuplicateValueValidation,
   EmailValidation,
   EmailValidatorAdapter,
+  EqualsToFieldValidation,
+  EqualsValidateOptions,
   IsArrayFieldValidation,
   NumberFieldValidation,
   NumberValidateOptions,
   RequiredFieldValidation,
+  RequiredFieldValidationOptions,
   StringFieldValidation,
   StringValidateOptions,
-  ValuesWithinValidation
+  ValuesWithinValidation,
+  WhithinValuesValidationOptions
 } from '@/infra/validations'
-import { DEFAULT_ISWITHIN } from '@/infra/validators'
-import {
-  BooleanFieldValidation,
-  BooleanValidateOptions
-} from '../validations/boolean'
-import {
-  EqualsToFieldValidation,
-  EqualsValidateOptions
-} from '../validations/equals'
+
 export class ValidationBuilder {
   private constructor(
     private readonly fieldName: string,
@@ -33,7 +31,7 @@ export class ValidationBuilder {
     return new ValidationBuilder(fieldName, [])
   }
 
-  required(options?: ValidationOptions): ValidationBuilder {
+  required(options?: RequiredFieldValidationOptions): ValidationBuilder {
     this.validations.push(new RequiredFieldValidation(this.fieldName, options))
     return this
   }
@@ -55,7 +53,7 @@ export class ValidationBuilder {
     return this
   }
 
-  date(options?: ValidationOptions): ValidationBuilder {
+  date(options?: RequiredFieldValidationOptions): ValidationBuilder {
     this.validations.push(new DateFieldValidation(this.fieldName, options))
     return this
   }
@@ -67,7 +65,7 @@ export class ValidationBuilder {
 
   within(
     values: unknown[],
-    options: ValidationOptions = DEFAULT_ISWITHIN
+    options: WhithinValuesValidationOptions
   ): ValidationBuilder {
     this.validations.push(
       new ValuesWithinValidation(this.fieldName, values, options)
@@ -77,7 +75,7 @@ export class ValidationBuilder {
 
   duplicate(
     values: unknown[],
-    options: ValidationOptions = DEFAULT_ISWITHIN
+    options: NumberValidateOptions
   ): ValidationBuilder {
     this.validations.push(
       new DuplicateValueValidation(this.fieldName, values, options)

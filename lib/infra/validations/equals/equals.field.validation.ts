@@ -18,15 +18,18 @@ export class EqualsToFieldValidation implements Validation {
       if (!(value === this.comparison)) {
         return {
           field: this.field,
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           error: new InvalidFieldError(
             `${this.options.message} ${this.comparison}`
           )
         }
       }
     } else {
+      // eslint-disable-next-line eqeqeq
       if (!(value == this.comparison)) {
         return {
           field: this.field,
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           error: new InvalidFieldError(
             `${this.options.message} ${this.comparison}`
           )

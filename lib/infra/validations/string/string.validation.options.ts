@@ -1,8 +1,10 @@
+import { MessagesValidations } from '@/infra/validators'
+
 export type StringValidateOptions = {
   strictEquals?: boolean
   message?: string
-  min?: { value: number; message?: string }
-  max?: { value: number; message?: string }
+  min_length?: { value: number; message?: string }
+  max_length?: { value: number; message?: string }
 }
 
 export const StringValidateOptionsDefault: Pick<
@@ -11,5 +13,5 @@ export const StringValidateOptionsDefault: Pick<
 > = {
   message: process.env.VALIDATION_STRING
     ? process.env.VALIDATION_STRING
-    : `Value is not a string`
+    : MessagesValidations.STRING
 }

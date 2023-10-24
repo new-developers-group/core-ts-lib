@@ -17,13 +17,13 @@ export function getRemainingMonthsOfYear(date = new Date()) {
 export function isMonthWith31Days(date = new Date()) {
   const month = date.getMonth() + 1
   return (
-    month == 1 ||
-    month == 3 ||
-    month == 5 ||
-    month == 7 ||
-    month == 8 ||
-    month == 10 ||
-    month == 12
+    month === 1 ||
+    month === 3 ||
+    month === 5 ||
+    month === 7 ||
+    month === 8 ||
+    month === 10 ||
+    month === 12
   )
 }
 
