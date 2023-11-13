@@ -6,5 +6,3 @@ export type EventDataModel =
   | BusinessObjectStateChangeDataModel
   | BusinessProcessProgressDataModel
   | SignificantBusinessEventDataModel
-
-  
