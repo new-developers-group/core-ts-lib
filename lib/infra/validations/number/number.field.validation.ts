@@ -26,8 +26,7 @@ export class NumberFieldValidation implements Validation {
       return {
         field: this.field,
         error: new InvalidFieldError(
-          message ||
-            `The mininum value of this should be ${this.options.min.value}`
+          message || `The mininum value of this should be ${this.options.min.value}`
         )
       }
     }
@@ -39,8 +38,7 @@ export class NumberFieldValidation implements Validation {
       return {
         field: this.field,
         error: new InvalidFieldError(
-          message ||
-            `The maximum value of this should be ${this.options.max.value}`
+          message || `The maximum value of this should be ${this.options.max.value}`
         )
       }
     }

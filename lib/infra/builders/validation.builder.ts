@@ -87,12 +87,14 @@ export class ValidationBuilder {
     this.validations.push(
       new EqualsToFieldValidation(this.fieldName, comparison, options)
     )
-    return this
+   return this 
   }
 
   boolean(options?: BooleanValidateOptions): ValidationBuilder {
-    this.validations.push(new BooleanFieldValidation(this.fieldName, options))
-    return this
+    this.validations.push(
+      new BooleanFieldValidation(this.fieldName, options)
+    )
+   return this 
   }
 
   sameAs(fieldToCompare: string): ValidationBuilder {

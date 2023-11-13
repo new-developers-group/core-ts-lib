@@ -1,10 +1,7 @@
 import { FieldValidation, Validation } from '@/data/protocols/validation'
 import { InvalidFieldError } from '@/domain/errors'
 import { searchInJson } from '@/util'
-import {
-  CompareValidateOptions,
-  CompareValidateOptionsDefault
-} from './compare-fields.validation.options'
+import { CompareValidateOptions, CompareValidateOptionsDefault } from './compare-fields.validation.options'
 
 export class CompareFieldsValidation implements Validation {
   constructor(
