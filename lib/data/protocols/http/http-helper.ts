@@ -53,3 +53,10 @@ export const noContent = (): HttpResponse => {
     .withStatus(HttpStatusCode.noContent)
     .build()
 }
+
+export const notFound = (): HttpResponse => {
+  return new HttpResponseBuilder()
+    .withBody(undefined)
+    .withStatus(HttpStatusCode.notFound)
+    .build()
+}
